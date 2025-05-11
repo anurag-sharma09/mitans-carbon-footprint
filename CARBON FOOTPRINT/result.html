@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Carbon Footprint Results</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container results-container">
+        <h1>Your Carbon Footprint Results</h1>
+        
+        <div class="result-section" id="result">
+            <div class="footprint-display">
+                <div class="footprint-chart">
+                    <canvas id="footprintChart"></canvas>
+                </div>
+                <div class="footprint-total">
+                    <h3>Monthly Emission</h3>
+                    <p><span id="total-emission">0</span> kgCO₂e</p>
+                </div>
+                <div class="footprint-offset">
+                    <p>You owe nature <span id="trees-needed">0</span> tree(s) monthly.</p>
+                    <button id="offset-btn" class="offset-btn">🌳 Proceed to offset 🌳</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="fact-section">
+            <h3>Did You Know?</h3>
+            <p id="fact" class="fact-text"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <button id="back-btn" class="nav-btn">← Back to Calculator</button>
+            <button id="share-btn" class="nav-btn">Share Results</button>
+            <a href="precautions.html" class="nav-btn" style="text-decoration: none; text-align: center;">View Environmental Tips</a>
+        </div>
+    </div>
+
+    <script src="result.js"></script>
+</body>
+</html>

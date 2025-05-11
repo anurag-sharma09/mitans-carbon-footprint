@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="personal">👤 Personal</button>
+            <button class="tab-btn" data-tab="travel">🚗 Travel</button>
+            <button class="tab-btn" data-tab="waste">🗑 Waste</button>
+            <button class="tab-btn" data-tab="energy">⚡ Energy</button>
+            <button class="tab-btn" data-tab="consumption">💚 Consumption</button>
+        </nav>
+
+        <div class="content-section active" id="personal">
+            <h2>Personal Information</h2>
+            <div class="input-group">
+                <label>Height (cm)</label>
+                <input type="number" id="height" placeholder="enter your height " min="0" max="250" />
+            </div>
+            <div class="input-group">
+                <label>Weight (kg)</label>
+                <input type="number" id="weight" placeholder="enter your weight" min="0" max="200" />
+            </div>
+            <div class="input-group">
+                <label>Gender</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Diet</label>
+                <select id="diet">
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="meat-eater">Meat Eater</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="content-section" id="travel">
+            <h2>Travel Information</h2>
+            <div class="input-group">
+                <label>Transportation Type</label>
+                <select id="transportation">
+                    <option value="public">Walk</option>
+                    <option value="public">Public Transport</option>
+                    <option value="car">Car</option>
+                    <option value="bike">Bike</option>
+                    <option value="bicycle">Bicycle</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Monthly Distance (km)</label>
+                <input type="range" id="distance" min="0" max="5000" value="0" />
+                <span class="range-value">0</span>
+            </div>
+            <div class="input-group">
+                <label>Flight Frequency</label>
+                <select id="flights">
+                    <option value="never">Never</option>
+                    <option value="rarely">Rarely</option>
+                    <option value="sometimes">Sometimes</option>
+                    <option value="often">Often</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="content-section" id="waste">
+            <h2>Waste Management</h2>
+            <div class="input-group">
+                <label>Waste Bag Size</label>
+                <select id="waste-size">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Weekly Waste Bags</label>
+                <input type="range" id="waste-bags" min="0" max="10" value="0" />
+                <span class="range-value">0</span>
+            </div>
+            <div class="input-group">
+                <label>Recycling</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="paper" /> Paper</label>
+                    <label><input type="checkbox" value="metal" /> Metal</label>
+                    <label><input type="checkbox" value="plastic" /> Plastic</label>
+                    <label><input type="checkbox" value="glass" /> Glass</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" id="energy">
+            <h2>Energy Usage</h2>
+            <div class="input-group">
+                <label>Heating Source</label>
+                <select id="heating">
+                    <option value="natural-gas" selected>Natural Gas</option>
+                    <option value="electricity">Electricity</option>
+                    <option value="renewable">Renewable</option>
+                    <option value="All">All</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Cooking System</label>
+                <select id="cooking">
+                    <option value="stove" selected>Stove</option>
+                    <option value="electric">Electric</option>
+                    <option value="induction">Induction</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Daily PC/TV Usage (hours)</label>
+                <input type="range" id="screen-time" min="0" max="24" value="0" />
+                <span class="range-value">0</span>
+            </div>
+            <div class="input-group">
+                <label>Daily Internet Usage (hours)</label>
+                <input type="range" id="internet-usage" min="0" max="24" value="0" />
+                <span class="range-value">0</span>
+            </div>
+        </div>
+
+        <div class="content-section" id="consumption">
+            <h2>Consumption Habits</h2>
+            <div class="input-group">
+                <label>Shower Frequency</label>
+                <select id="shower">
+                    <option value="daily" selected>Daily</option>
+                    <option value="twice-daily">Twice Daily</option>
+                    <option value="every-other-day">Every Other Day</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Monthly Grocery Spending ($)</label>
+                <input type="range" id="groceries" min="0" max="500" value="0" />
+                <span class="range-value">0</span>
+            </div>
+            <div class="input-group">
+                <label>Monthly Clothes Purchases</label>
+                <input type="range" id="clothes" min="0" max="30" value="0" />
+                <span class="range-value">0</span>
+            </div>
+        </div>
+
+        <div class="result-section" id="result" style="display: none;">
+            <h2>Your Carbon Footprint</h2>
+            <div class="footprint-display">
+                <div class="footprint-chart">
+                    <canvas id="footprintChart"></canvas>
+                </div>
+                <div class="footprint-total">
+                    <h3>Monthly Emission</h3>
+                    <p><span id="total-emission">0</span> kgCO₂e</p>
+                </div>
+                <div class="footprint-offset">
+                    <p>You owe nature <span id="trees-needed">0</span> tree(s) monthly.</p>
+                    <button id="offset-btn">🌳 Proceed to offset 🌳</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <button id="prev-btn" class="nav-btn" style="display: none;">Previous</button>
+            <button id="next-btn" class="nav-btn">Next</button>
+            
+            <!-- ✅ Fixed button -->
+            <a href="result.html" id="calculate-btn" class="nav-btn" style="display: none;">Calculate Footprint</a>
+            
+            <button id="refresh-btn" class="nav-btn" style="display: none;">Refresh</button>
+        </div>
+    </div>
+
+    <div class="did-you-know">
+        <h3>Did You Know?</h3>
+        <p id="fact"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
