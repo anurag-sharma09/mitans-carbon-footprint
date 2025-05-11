@@ -1,4 +1,4 @@
-# 🌱 Carbine Footprint Calculator
+# 🌱 Carbon Footprint Calculator
 
 A simple, responsive, and offline-capable web application built using *HTML, CSS, and JavaScript* that helps users calculate and understand their carbon footprint.
 
